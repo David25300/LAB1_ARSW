@@ -31,7 +31,7 @@ public class CountThreadsMain {
             int end = start + chunk - 1 + extra;
     
             threads[i] = new CountThread(start, end);
-            threads[i].run();
+            threads[i].start();
             start = end + 1;
         }
     }
