@@ -91,3 +91,39 @@ Al ejecutar con el método start() los números aparecen on un orden aleatorio e
 en una "condición de carrera". Por otro lado, con el método run() los números salen en orden y esto es 
 porque los hilos se ejecutan uno a la vez.
 
+**Parte III - Evaluación de Desempeño**
+
+A partir de lo anterior, implemente la siguiente secuencia de experimentos para realizar las validación de direcciones IP dispersas (por ejemplo 202.24.34.55), tomando los tiempos de ejecución de los mismos (asegúrese de hacerlos en la misma máquina):
+
+1. Un solo hilo.
+
+![1 Hilo.png](PARALLELISM-JAVA_THREADS-INTRODUCTION_BLACKLISTSEARCH/img/1%20Hilo.png)
+
+2. Tantos hilos como núcleos de procesamiento (haga que el programa determine esto haciendo uso del [API Runtime](https://docs.oracle.com/javase/7/docs/api/java/lang/Runtime.html)).
+
+![Hilos_Nucleos.png](PARALLELISM-JAVA_THREADS-INTRODUCTION_BLACKLISTSEARCH/img/Hilos_Nucleos.png)
+
+3. Tantos hilos como el doble de núcleos de procesamiento.
+
+![DobleDeNucleos.png](PARALLELISM-JAVA_THREADS-INTRODUCTION_BLACKLISTSEARCH/img/DobleDeNucleos.png)
+
+4. 50 hilos.
+
+![50Hilos.png](PARALLELISM-JAVA_THREADS-INTRODUCTION_BLACKLISTSEARCH/img/50Hilos.png)
+
+5. 100 hilos.
+
+![100Hilos.png](PARALLELISM-JAVA_THREADS-INTRODUCTION_BLACKLISTSEARCH/img/100Hilos.png)
+
+![grafica_tiempo_vs_hilos.png](PARALLELISM-JAVA_THREADS-INTRODUCTION_BLACKLISTSEARCH/img/grafica_tiempo_vs_hilos.png)
+
+Los resultados muestran que, al aumentar el número de hilos, el tiempo de ejecución disminuye considerablemente. 
+Con un solo hilo, la búsqueda tardó 83.926 ms, mientras que con 100 hilos tardó 969 ms. 
+Esto ocurre porque las 80.000 listas negras se dividen en segmentos y varios hilos realizan la búsqueda simultáneamente.
+
+El rendimiento mejora especialmente al pasar de 1 a 28 hilos, ya que el equipo dispone de 28 procesadores lógicos y puede repartir mejor el trabajo. 
+Al utilizar 56, 50 y 100 hilos, el tiempo continúa disminuyendo, aunque la mejora entre cada prueba es menos pronunciada. 
+Se plantea que, si se siguen agregando hilos, llegará un punto en el que el rendimiento dejará de mejorar e incluso podría empeorar debido al costo de crear, administrar y alternar entre demasiados hilos.
+
+**Parte IV - Ejercicio Black List Search**
+
