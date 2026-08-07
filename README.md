@@ -127,3 +127,24 @@ Se plantea que, si se siguen agregando hilos, llegará un punto en el que el ren
 
 **Parte IV - Ejercicio Black List Search**
 
+
+**Parte IV - Introducción a Hilos en Java
+
+- Por qué el mejor desempeño no se logra con los 500 hilos?, cómo se compara este desempeño cuando se usan 200?.
+
+vamos a decir que nuestra fracción paralelizable es de 80% entonces el calculo seria 
+
+![punto II 2.2.png](PARALLELISM-JAVA_THREADS-INTRODUCTION_BLACKLISTSEARCH/img/calculo.png)
+
+ya con esta comprobación podemos ver como el tener 500 hilos es pero que tener 200 entre mas hilos tengamos menor será el rendimiento teórico. 
+
+- Cómo se comporta la solución usando tantos hilos de procesamiento como núcleos comparado con el resultado de usar el doble de éste?.
+
+cada hilo puede ejecutarse en su propio núcleo de forma continua, sin que el sistema operativo tenga que quitarle el procesador a uno para dárselo a otro y se podría obtener el mejor desempeño real
+
+- De acuerdo con lo anterior, si para este problema en lugar de 100 hilos en una sola CPU se pudiera usar 1 hilo en cada una de 100 máquinas hipotéticas, la ley de Amdahls se aplicaría mejor?. Si en lugar de esto se usaran c hilos en 100/c máquinas distribuidas (siendo c es el número de núcleos de dichas máquinas), se mejoraría?. Explique su respuesta.
+
+.en las 100 maquinas se mejoraría ya que tenemos el trabajo repartido entre todas las maquinas seindo mas efectivas 
+
+.en el caso de las 100/c sigue habiendo mejora pero igual los hilos estarían compitiendo entre si para tener los recursos de esa maquina 
+
